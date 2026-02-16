@@ -54,7 +54,7 @@ export default function BookingModal({
                   min={today}
                   required
                   disabled={isLoading}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent disabled:bg-gray-100"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent disabled:bg-gray-100 outline-none"
                 />
               </div>
 
@@ -66,7 +66,7 @@ export default function BookingModal({
                   onChange={(e) => onFormChange('startTime', e.target.value)}
                   required
                   disabled={isLoading}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent disabled:bg-gray-100"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent disabled:bg-gray-100"
                 />
                 <small className="text-gray-500">
                   Available: {room.availableFrom} - {room.availableTo}
@@ -81,7 +81,7 @@ export default function BookingModal({
                   onChange={(e) => onFormChange('endTime', e.target.value)}
                   required
                   disabled={isLoading}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent disabled:bg-gray-100"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent disabled:bg-gray-100"
                 />
               </div>
 

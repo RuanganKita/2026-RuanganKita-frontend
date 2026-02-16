@@ -1,1 +1,15 @@
 /* Tailwind CSS is imported in index.css */
+
+/* Remove default focus outline (black border) on all inputs in modals */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+/* Ensure accessibility with visible focus states using ring */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+}
