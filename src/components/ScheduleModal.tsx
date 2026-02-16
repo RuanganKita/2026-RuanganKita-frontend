@@ -15,7 +15,7 @@ export default function ScheduleModal({
   onClose,
   onDateChange,
 }: ScheduleModalProps) {
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Jakarta' });
 
   return (
     <div className="fixed z-50 inset-0 overflow-y-auto">

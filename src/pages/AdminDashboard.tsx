@@ -74,7 +74,7 @@ export default function AdminDashboard() {
   };
 
   const fetchTodayReservedHours = async (roomsList: RoomDto[]) => {
-    const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+    const today = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Jakarta' }); // YYYY-MM-DD in UTC+7
     const reservedHoursMap: Record<number, ReservedHoursResponseDto> = {};
     
     try {
@@ -100,7 +100,7 @@ export default function AdminDashboard() {
 
   const openScheduleModal = async (room: RoomDto) => {
     setScheduleModalRoom(room);
-    const today = new Date().toISOString().split('T')[0];
+    const today = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Jakarta' });
     setScheduleDate(today);
     setIsScheduleModalOpen(true);
     
