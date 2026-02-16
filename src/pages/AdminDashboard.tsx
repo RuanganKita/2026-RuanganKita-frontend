@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { roomsApi, reservationsApi, usersApi, authApi } from '../services/api';
 import type { RoomDto, ReservationDto, CreateRoomDto, UpdateRoomDto, CreateReservationDto, UserDto, ReservedHoursResponseDto } from '../types';
@@ -15,6 +16,7 @@ import ScheduleModal from '../components/ScheduleModal';
 
 export default function AdminDashboard() {
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<'rooms' | 'reservations' | 'users' | 'book'>('rooms');
 
   const [rooms, setRooms] = useState<RoomDto[]>([]);
@@ -48,6 +50,11 @@ export default function AdminDashboard() {
   
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   useEffect(() => {
     fetchRooms();
@@ -320,7 +327,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <DashboardHeader title="Admin Dashboard" username={user?.username || ''} onLogout={logout} />
+      <DashboardHeader title="Admin Dashboard" username={user?.username || ''} onLogout={handleLogout} />
 
       {error && <ErrorAlert message={error} />}
 

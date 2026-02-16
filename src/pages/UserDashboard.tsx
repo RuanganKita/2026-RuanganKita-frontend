@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { roomsApi, reservationsApi } from '../services/api';
 import type { RoomDto, ReservationDto, CreateReservationDto, ReservedHoursResponseDto } from '../types';
@@ -12,6 +13,7 @@ import ScheduleModal from '../components/ScheduleModal';
 
 export default function UserDashboard() {
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<'book' | 'history'>('book');
 
   // Rooms state
@@ -38,6 +40,11 @@ export default function UserDashboard() {
   
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   useEffect(() => {
     fetchRooms();
@@ -198,7 +205,7 @@ export default function UserDashboard() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <DashboardHeader title="Dashboard" username={user?.username || ''} onLogout={logout} />
+      <DashboardHeader title="Dashboard" username={user?.username || ''} onLogout={handleLogout} />
 
       {error && <ErrorAlert message={error} />}
 

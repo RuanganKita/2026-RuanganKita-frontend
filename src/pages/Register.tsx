@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 
 export default function Register() {
@@ -13,6 +13,7 @@ export default function Register() {
   const [isLoading, setIsLoading] = useState(false);
 
   const { register } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -33,7 +34,7 @@ export default function Register() {
     try {
       await register({ username, password, role: roleRequest });
       const targetPath = roleRequest === 'Admin' ? '/login' : '/user';
-      window.location.href = targetPath;
+      navigate(targetPath);
     } catch (err: unknown) {
       setError((err as { response?: { data?: { message?: string } } }).response?.data?.message || 'Registration failed. Username already exist.');
       setIsLoading(false);
