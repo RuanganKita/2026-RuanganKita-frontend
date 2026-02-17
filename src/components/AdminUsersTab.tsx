@@ -32,9 +32,6 @@ export default function AdminUsersTab({ users, onVerifyUser, onDeleteUser }: Adm
                     Role
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Created At
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
@@ -53,9 +50,6 @@ export default function AdminUsersTab({ users, onVerifyUser, onDeleteUser }: Adm
                       >
                         {u.role}
                       </span>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {new Date(u.createdAt).toLocaleDateString()}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                       <button
@@ -97,9 +91,6 @@ export default function AdminUsersTab({ users, onVerifyUser, onDeleteUser }: Adm
                   Verified
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Created At
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
@@ -129,9 +120,6 @@ export default function AdminUsersTab({ users, onVerifyUser, onDeleteUser }: Adm
                         Unverified
                       </span>
                     )}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {new Date(u.createdAt).toLocaleDateString()}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                     <button
